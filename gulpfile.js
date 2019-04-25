@@ -1,20 +1,19 @@
-const {series, src, dest, watch} = require('gulp');
-const sass = require('gulp-sass');
-const sassGlob = require('gulp-sass-glob');
-const gulpPostCSS = require('gulp-postcss');
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const concat = require('gulp-concat');
-const rename = require('gulp-rename');
+const { series, src, dest, watch } = require("gulp");
+const sass = require("gulp-sass");
+const sassGlob = require("gulp-sass-glob");
+const gulpPostCSS = require("gulp-postcss");
+const autoprefixer = require("autoprefixer");
+const cssnano = require("cssnano");
+const concat = require("gulp-concat");
+const rename = require("gulp-rename");
 
-
-sass.compiler = require('node-sass');
+sass.compiler = require("node-sass");
 
 function gulpSASS(cb) {
   return src("./styles/main.scss")
-  .pipe(sassGlob())
-  .pipe(sass().on("error", sass.logError))
-  .pipe(dest("./css"));
+    .pipe(sassGlob())
+    .pipe(sass().on("error", sass.logError))
+    .pipe(dest("./css"));
 }
 
 function postCSS(cb) {
@@ -26,11 +25,12 @@ function postCSS(cb) {
     cssnano()
   ];
 
-  return src("./styles/css/main.css")
+  return src("./css/main.css")
     .pipe(gulpPostCSS(plugins))
-    .pipe(rename({extname: ".min.css"}))
+    .pipe(rename({ extname: ".min.css" }))
     .pipe(dest("./src/"));
 }
 
 exports.default = series(gulpSASS, postCSS);
+console.log("Watching...");
 watch(["./styles/**/*.scss"], series(gulpSASS, postCSS));
