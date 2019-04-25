@@ -2,7 +2,13 @@ import React from "react";
 
 class Navigation extends React.Component {
   render() {
-    return <div>This is the Navigation</div>;
+    return (
+      <nav className="navigation">
+        <div>Login</div>
+        <div>Mixtapify</div>
+        <div>Hamburger</div>
+      </nav>
+    );
   }
 }
 

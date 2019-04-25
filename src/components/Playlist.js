@@ -1,9 +1,12 @@
 import React from "react";
 
-class Playlist extends React.Component {
-  render() {
-    return <div>This is the Playlist</div>;
-  }
-}
-
+const Playlist = props => (
+  <div className="playlist">
+    <header>
+      <div>Album Art</div>
+      <div>Playlist Title</div>
+    </header>
+    <ul>{props.children}</ul>
+  </div>
+);
 export default Playlist;
