@@ -1,10 +1,26 @@
 import React, { Component } from "react";
-import { render } from "react-dom";
+// import {connect} from 'react-redux';
 
-class ConnectedLogin extends Component {
+class Login extends Component {
+  constructor() {
+    super();
+
+    this.loginButton = this.loginButton.bind(this);
+  }
+  loginButton() {
+    window.location = window.location.href.includes("localhost")
+      ? "http://localhost:8888/login"
+      : null;
+  }
+
   render() {
-    return <div>login page</div>;
+    return (
+      <div>
+        <div>Login and start creating lists with friends.</div>
+        <button onClick={this.loginButton}>Login</button>
+      </div>
+    );
   }
 }
 
-export default ConnectedLogin;
+export default Login;
