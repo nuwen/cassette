@@ -1,12 +1,31 @@
 import React from "react";
+import { connect } from "react-redux";
 
-const PlaylistLibrary = props => (
-  <div className="playlist">
-    <header>
-      <div>User Name</div>
-      <div>Playlists</div>
-    </header>
-    <ul>{props.children}</ul>
-  </div>
-);
-export default PlaylistLibrary;
+const PlaylistLibrary = ({ userPlaylists }) => {
+  console.log(userPlaylists);
+  if (!userPlaylists.items) {
+    return (
+      <div>
+        <h1>PLAYLISTLIBRARY</h1>
+        LOADING..
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h1>PLAYLISTLIBRARY</h1>
+
+        <ul className="playlistTable">
+          {userPlaylists.items.map(item => (
+            <li key={item.id}>{item.name}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+};
+
+const mapStateToProps = state => ({
+  userPlaylists: state.playlists.userPlaylists
+});
+export default connect(mapStateToProps)(PlaylistLibrary);

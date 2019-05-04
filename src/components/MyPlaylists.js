@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PlaylistLibrary from "./PlaylistLibrary";
-import Playlist from "./Playlist";
 
 class MyPlaylists extends Component {
   render() {
@@ -11,18 +11,13 @@ class MyPlaylists extends Component {
             <span role="img" aria-label="User Profile Image">
               💩
             </span>
-            <div>Lorem Ipsum.</div>
+            <div>Lorem Ipsum.!</div>
           </div>
         </div>
-        <PlaylistLibrary>
-          <Playlist />
-          <Playlist />
-          <Playlist />
-          <Playlist />
-        </PlaylistLibrary>
+        <PlaylistLibrary />
       </div>
     );
   }
 }
 
-export default MyPlaylists;
+export default connect(null)(MyPlaylists);

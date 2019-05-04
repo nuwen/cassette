@@ -17,7 +17,7 @@ class Login extends Component {
     return (
       <div>
         <div>Login and start creating lists with friends.</div>
-        <button onClick={this.loginButton}>Login</button>
+        <button onClick={this.loginButton}>Sign in with Spotify!</button>
       </div>
     );
   }

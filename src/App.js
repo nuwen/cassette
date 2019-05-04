@@ -2,31 +2,30 @@ import React, { Component } from "react";
 import "./App.css";
 import { Router } from "@reach/router";
 import { connect } from "react-redux";
+import queryString from "query-string";
 import Navigation from "./components/Navigation";
 import PlaylistTable from "./components/PlaylistTable";
 import Song from "./components/Song";
 import Controls from "./components/Controls";
 import Login from "./components/Login";
 import MyPlaylists from "./components/MyPlaylists";
-import { getFakeData } from "./js/actions/index.js";
+import { fetchUserData } from "./js/actions/index.js";
+import { fetchPlaylistsData } from "./js/actions/index.js";
+import { saveAccessToken } from "./js/actions/index.js";
+import UserIndex from "./components/UserIndex";
 
 export class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      user: null
-    };
-  }
   componentDidMount() {
-    console.log("component loaded");
-    setTimeout(() => {
-      this.props.getFakeData();
-    }, 1000);
+    const parsed = queryString.parse(window.location.search);
+    const accessToken = parsed.access_token;
+    this.props.saveAccessToken(accessToken);
+    this.props.fetchUserData(accessToken);
+    this.props.fetchPlaylistsData(accessToken);
+    console.log(accessToken);
   }
 
   render() {
-    if (!this.state.user) {
+    if (this.props.userData.error) {
       return (
         <div className="App">
           <Login path="/" />
@@ -37,27 +36,9 @@ export class App extends Component {
         <div className="App">
           <Navigation />
           <Router>
+            <UserIndex path="/" />
             <MyPlaylists path="/playlists" />
             <PlaylistTable path="/playlist">
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
-              <Song />
               <Song />
             </PlaylistTable>
           </Router>
@@ -69,10 +50,10 @@ export class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return { user: state.user };
+  return { userData: state.user.userData };
 };
 
 export default connect(
   mapStateToProps,
-  { getFakeData }
+  { fetchUserData, saveAccessToken, fetchPlaylistsData }
 )(App);
