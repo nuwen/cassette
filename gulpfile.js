@@ -20,7 +20,7 @@ function postCSS(cb) {
   let plugins = [
     autoprefixer({
       grid: true,
-      browsers: ["last 5 version", "ie 6-8", "Firefox > 20"]
+      browsers: ["last 5 version", "Firefox > 20"]
     }),
     cssnano()
   ];

@@ -1,0 +1,11 @@
+.userIndex {
+  display: grid;
+  grid-auto-flow: rows;
+  justify-items: center;
+  height: 100%;
+}
+
+.userIndex__buttons {
+  display: grid;
+  grid-auto-flow: row;
+}

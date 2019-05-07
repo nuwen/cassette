@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 const UserIndex = ({ userData }) => {
   return (
-    <div>
+    <div className="userIndex">
       <span role="img" aria-label="User Profile Image" />
       <div>{userData.display_name}</div>
       {userData.images ? (
@@ -14,7 +14,7 @@ const UserIndex = ({ userData }) => {
       ) : (
         ""
       )}
-      <div>
+      <div className="userIndex__buttons">
         <a href="/playlists">
           <button>My Playlists</button>
         </a>

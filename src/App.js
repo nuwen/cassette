@@ -39,15 +39,15 @@ export class App extends Component {
     } else {
       return (
         <div className="App">
+          <Hamburger />
           <div className="container">
-            <Hamburger />
             <Navigation />
-            <Router>
+            <Router id="appRouter">
               <UserIndex path="/" />
               <MyPlaylists path="/playlists" />
               <PlaylistTable path="/playlist" />
+              <Controls path="/*" />
             </Router>
-            {/* <Controls /> */}
           </div>
         </div>
       );
