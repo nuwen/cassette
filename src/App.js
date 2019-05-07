@@ -12,6 +12,7 @@ import { fetchUserData } from "./js/actions/index.js";
 import { fetchPlaylistsData } from "./js/actions/index.js";
 import { saveAccessToken } from "./js/actions/index.js";
 import UserIndex from "./components/UserIndex";
+import Hamburger from "./components/Hamburger";
 
 export class App extends Component {
   componentDidMount() {
@@ -29,19 +30,25 @@ export class App extends Component {
     if (!this.props.accessToken) {
       return (
         <div className="App">
-          <Login path="/" />
+          <div className="container">
+            <Hamburger />
+            <Login path="/" />
+          </div>
         </div>
       );
     } else {
       return (
         <div className="App">
-          <Navigation />
-          <Router>
-            <UserIndex path="/" />
-            <MyPlaylists path="/playlists" />
-            <PlaylistTable path="/playlist" />
-          </Router>
-          {/* <Controls /> */}
+          <div className="container">
+            <Hamburger />
+            <Navigation />
+            <Router>
+              <UserIndex path="/" />
+              <MyPlaylists path="/playlists" />
+              <PlaylistTable path="/playlist" />
+            </Router>
+            {/* <Controls /> */}
+          </div>
         </div>
       );
     }
