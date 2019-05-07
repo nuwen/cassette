@@ -8,7 +8,6 @@ button,
   font-family: "Raleway";
   font-weight: 400;
   padding: 10px 20px;
-  margin: 5px;
   transition: all 300ms ease-in-out; }
   a > .button:hover,
   button:hover,
@@ -69,7 +68,11 @@ ol {
 .navigation {
   display: grid;
   grid-area: navigation;
-  grid-template-columns: 1fr 2fr 1fr; }
+  grid-template-columns: 1fr 2fr 1fr;
+  justify-items: stretch; }
+
+.navigation__logo {
+  justify-self: center; }
 
 .navigation > * {
   border: 1px solid red; }
@@ -170,4 +173,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 .userIndex__buttons {
   display: grid;
-  grid-auto-flow: row; }
+  justify-items: center;
+  grid-gap: 10px;
+  grid-template-rows: min-content min-content min-content; }

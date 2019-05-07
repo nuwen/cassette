@@ -5,7 +5,9 @@ class Navigation extends React.Component {
     return (
       <nav className="navigation">
         <a href="/">Login</a>
-        <a href="/">Mixtapify</a>
+        <a className="navigation__logo" href="/">
+          Mixtapify
+        </a>
         <a />
       </nav>
     );
