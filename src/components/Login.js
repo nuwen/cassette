@@ -17,7 +17,17 @@ class Login extends Component {
     return (
       <div>
         <div>Login and start creating lists with friends.</div>
-        <button onClick={this.loginButton}>Sign in with Spotify!</button>
+        <button className="button button--wide" onClick={this.loginButton}>
+          Sign in with Spotify!
+        </button>
+        <button className="button">Button</button>
+        <button className="button button--wide">Button</button>
+        <button className="button button--extra-wide">Button</button>
+        <button className="button button">Button</button>
+        <button className="button button--wide button--inverse">Button</button>
+        <button className="button button--extra-wide button--inverse">
+          Button
+        </button>
       </div>
     );
   }

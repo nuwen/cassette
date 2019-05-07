@@ -14,6 +14,17 @@ const UserIndex = ({ userData }) => {
       ) : (
         ""
       )}
+      <div>
+        <a href="/playlists">
+          <button>My Playlists</button>
+        </a>
+        <a href="/new-playlist">
+          <button>Create New Playlist</button>
+        </a>
+        <a href="/playlist-code">
+          <button>Enter Playlist Code</button>
+        </a>
+      </div>
     </div>
   );
 };

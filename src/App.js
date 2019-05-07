@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import queryString from "query-string";
 import Navigation from "./components/Navigation";
 import PlaylistTable from "./components/PlaylistTable";
-import Song from "./components/Song";
 import Controls from "./components/Controls";
 import Login from "./components/Login";
 import MyPlaylists from "./components/MyPlaylists";
@@ -17,7 +16,9 @@ import UserIndex from "./components/UserIndex";
 export class App extends Component {
   componentDidMount() {
     const parsed = queryString.parse(window.location.search);
-    const accessToken = parsed.access_token;
+    let accessToken = parsed.access_token;
+    let refreshToken = parsed.refresh_token;
+    console.log(refreshToken);
     this.props.saveAccessToken(accessToken);
     this.props.fetchUserData(accessToken);
     this.props.fetchPlaylistsData(accessToken);
@@ -25,7 +26,7 @@ export class App extends Component {
   }
 
   render() {
-    if (this.props.userData.error) {
+    if (!this.props.accessToken) {
       return (
         <div className="App">
           <Login path="/" />
@@ -38,11 +39,9 @@ export class App extends Component {
           <Router>
             <UserIndex path="/" />
             <MyPlaylists path="/playlists" />
-            <PlaylistTable path="/playlist">
-              <Song />
-            </PlaylistTable>
+            <PlaylistTable path="/playlist" />
           </Router>
-          <Controls />
+          {/* <Controls /> */}
         </div>
       );
     }
@@ -50,7 +49,10 @@ export class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return { userData: state.user.userData };
+  return {
+    userData: state.user.userData,
+    accessToken: state.user.accessToken
+  };
 };
 
 export default connect(
