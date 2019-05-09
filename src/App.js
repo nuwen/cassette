@@ -19,14 +19,16 @@ export class App extends Component {
     const parsed = queryString.parse(window.location.search);
     let accessToken = parsed.access_token;
     let refreshToken = parsed.refresh_token;
-    console.log(refreshToken);
     this.props.saveAccessToken(accessToken);
     this.props.fetchUserData(accessToken);
     this.props.fetchPlaylistsData(accessToken);
-    console.log(accessToken);
   }
 
   render() {
+    console.log(this.props.accessToken);
+    let accessTokenQuery = this.props.accessToken
+      ? "?access_token=" + this.props.accessToken
+      : "";
     if (!this.props.accessToken) {
       return (
         <div className="App">
@@ -44,7 +46,7 @@ export class App extends Component {
             <Navigation />
             <Router id="appRouter">
               <UserIndex path="/" />
-              <MyPlaylists path="/playlists" />
+              <MyPlaylists path="/my-playlists" />
               <PlaylistTable path="/playlist" />
               <Controls path="/*" />
             </Router>

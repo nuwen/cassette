@@ -5,7 +5,7 @@ import PlaylistLibrary from "./PlaylistLibrary";
 class MyPlaylists extends Component {
   render() {
     return (
-      <div>
+      <div className="myPlaylists">
         <div>
           <div>
             <span role="img" aria-label="User Profile Image">
@@ -20,4 +20,4 @@ class MyPlaylists extends Component {
   }
 }
 
-export default connect(null)(MyPlaylists);
+export default MyPlaylists;

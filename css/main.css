@@ -59,6 +59,9 @@ ol {
   list-style: none;
   padding: 0; }
 
+a {
+  text-decoration: none; }
+
 .controls {
   display: grid;
   grid-template-columns: 1fr 1fr;
