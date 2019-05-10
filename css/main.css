@@ -45,7 +45,7 @@ body,
   padding: 0px;
   font-family: "Raleway", sans-serif;
   background: white;
-  color: black;
+  color: #3b4252;
   height: 100%; }
 
 .container {
@@ -166,7 +166,19 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 #appRouter {
   height: 100%;
-  grid-area: app; }
+  grid-area: app;
+  padding: 0 10px;
+  overflow-y: scroll; }
+
+.myPlaylists {
+  height: 100%; }
+
+.playlistTable {
+  display: grid;
+  background-color: #d8dee9;
+  padding: 10px;
+  border-radius: 5px;
+  grid-gap: 10px; }
 
 .userIndex {
   display: grid;

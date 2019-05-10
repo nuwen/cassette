@@ -1,4 +1,6 @@
 #appRouter {
   height: 100%;
   grid-area: app;
+  padding: 0 10px;
+  overflow-y: scroll;
 }
