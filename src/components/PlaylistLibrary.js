@@ -20,7 +20,13 @@ const PlaylistLibrary = ({ userPlaylists, accessToken }) => {
           </li>
         );
       } else {
-        return <li key={item.id}>{item.name}</li>;
+        return (
+          <li key={item.id}>
+            <a href={"/playlist/" + item.id + "?access_token=" + accessToken}>
+              {item.name}
+            </a>
+          </li>
+        );
       }
     });
     return (

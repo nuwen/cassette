@@ -26,7 +26,6 @@ export class App extends Component {
   }
 
   render() {
-    console.log(this.props.accessToken);
     // eslint-disable-next-line
     let accessTokenQuery = this.props.accessToken
       ? "?access_token=" + this.props.accessToken
@@ -65,8 +64,19 @@ const mapStateToProps = state => {
     accessToken: state.user.accessToken
   };
 };
-
+// eslint-disable-next-line
+const mapDispatchToProps = state => {
+  return {
+    fetchUserData,
+    saveAccessToken,
+    fetchPlaylistsData
+  };
+};
 export default connect(
   mapStateToProps,
-  { fetchUserData, saveAccessToken, fetchPlaylistsData }
+  {
+    fetchUserData,
+    saveAccessToken,
+    fetchPlaylistsData
+  }
 )(App);

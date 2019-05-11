@@ -1,26 +1,44 @@
 import React from "react";
 
-class Song extends React.Component {
-  render() {
-    return (
-      <li className="song">
-        <div className="song__details">
-          <div className="song__title">
-            Song Title Song Title Song Title Song Title Song Title Song Title
-            Song Title Song Title{" "}
-          </div>
-          <div className="song__artist">
-            Song Artist(s) Song Artist(s) Song Artist(s) Song Artist(s) Song
-            Artist(s) Song Artist(s) Song Artist(s) Song Artist(s) Song
-            Artist(s) Song Artist(s) Song Artist(s) Song Artist(s) Song
-            Artist(s) Song Artist(s) Song Artist(s) Song Artist(s) Song
-            Artist(s){" "}
-          </div>
-        </div>
-        <button>+</button>
-      </li>
-    );
+const Song = ({ artists, name, uri }) => {
+  let artistNames = [];
+  let joinedNames = [];
+  let verboseNames = "";
+
+  artistNames = artists.filter(artist => artist.name);
+
+  artistNames.forEach(artist => {
+    if (artist.name) {
+      joinedNames.push(artist.name);
+    }
+  });
+
+  if (joinedNames.length === 1) {
+    verboseNames = joinedNames.join();
   }
-}
+  if (joinedNames.length === 2) {
+    verboseNames = joinedNames.join(" & ");
+  }
+  if (joinedNames.length > 2) {
+    verboseNames = joinedNames.join(", ");
+  }
+
+  // let joinedNames = artistNames.
+  return (
+    <li className="song">
+      <div className="song__details">
+        <div className="song__title">{name}</div>
+        <div className="song__artist">{verboseNames}</div>
+      </div>
+      <a
+        className="song__link"
+        alt={`Add ${name} to your Spotify Library}`}
+        href={uri}
+      >
+        <button>+</button>
+      </a>
+    </li>
+  );
+};
 
 export default Song;

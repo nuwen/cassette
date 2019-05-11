@@ -1,7 +1,11 @@
-import { FETCH_USER_PLAYLISTS } from "../constants/action-types";
+import {
+  FETCH_USER_PLAYLISTS,
+  FETCH_PLAYLIST_SONGS
+} from "../constants/action-types";
 
 const initialState = {
-  userPlaylists: {}
+  userPlaylists: {},
+  currentPlaylist: {}
 };
 
 function playlistsReducer(state = initialState, action) {
@@ -10,6 +14,13 @@ function playlistsReducer(state = initialState, action) {
       userPlaylists: Object.assign({}, state.userPlaylists, action.payload)
     });
   }
+
+  if (action.type === FETCH_PLAYLIST_SONGS) {
+    return Object.assign({}, state, {
+      currentPlaylist: Object.assign({}, state.currentPlaylist, action.payload)
+    });
+  }
+
   return state;
 }
 
