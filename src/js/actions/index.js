@@ -23,6 +23,15 @@ export function saveAccessToken(accessToken) {
   };
 }
 
+export function updateLoadingState(boolean) {
+  return function(dispatch) {
+    return dispatch({
+      type: "UPDATE_LOADING_STATE",
+      payload: boolean
+    });
+  };
+}
+
 export function fetchPlaylistsData(accessToken) {
   return function(dispatch) {
     return fetch("https://api.spotify.com/v1/me/playlists", {

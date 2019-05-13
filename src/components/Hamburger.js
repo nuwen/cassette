@@ -10,13 +10,21 @@ class Hamburger extends React.Component {
   render() {
     return (
       <Menu right>
-        <a id="home" className="menu-item" href="/">
+        <a
+          id="home"
+          className="menu-item"
+          href={"/?access_token=" + this.props.accessToken}
+        >
           Home
         </a>
-        <a id="about" className="menu-item" href="/playlists">
+        <a
+          id="about"
+          className="menu-item"
+          href={"/my-playlists?access_token=" + this.props.accessToken}
+        >
           Playlists
         </a>
-        <a id="contact" className="menu-item" href="/profile">
+        <a id="contact" className="menu-item" href="/">
           Profile
         </a>
       </Menu>

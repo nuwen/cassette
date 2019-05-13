@@ -4,11 +4,11 @@ class Navigation extends React.Component {
   render() {
     return (
       <nav className="navigation">
-        <a className="navigation__item navigation__item-left" href="/">
-          Login
+        <a className="navigation__item navigation__item-left" href="/?">
+          <div className="navigation__content">Login</div>
         </a>
         <a className="navigation__logo" href="/">
-          Mixtapify
+          Cassette
         </a>
         <span className="navigation__item navigation__item-right" />
       </nav>

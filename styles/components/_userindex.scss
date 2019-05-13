@@ -1,8 +1,8 @@
 .userIndex {
   display: grid;
   grid-auto-flow: rows;
-  justify-items: center;
   height: 100%;
+  justify-content: center;
 }
 
 .userIndex__buttons {

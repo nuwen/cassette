@@ -13,11 +13,13 @@ import { fetchPlaylistsData } from "./js/actions/index.js";
 import { saveAccessToken } from "./js/actions/index.js";
 import UserIndex from "./components/UserIndex";
 import Hamburger from "./components/Hamburger";
+import Loading from "./components/Loading";
 
 export class App extends Component {
   componentDidMount() {
+    let accessToken = false;
     const parsed = queryString.parse(window.location.search);
-    let accessToken = parsed.access_token;
+    accessToken = parsed.access_token;
     // eslint-disable-next-line
     let refreshToken = parsed.refresh_token;
     this.props.saveAccessToken(accessToken);
@@ -26,10 +28,6 @@ export class App extends Component {
   }
 
   render() {
-    // eslint-disable-next-line
-    let accessTokenQuery = this.props.accessToken
-      ? "?access_token=" + this.props.accessToken
-      : "";
     if (!this.props.accessToken) {
       return (
         <div className="App">
@@ -42,9 +40,10 @@ export class App extends Component {
     } else {
       return (
         <div className="App">
-          <Hamburger />
+          <Hamburger accessToken={this.props.accessToken} />
           <div className="container">
             <Navigation />
+            {this.props.isLoading ? <Loading /> : null}
             <Router id="appRouter">
               <UserIndex path="/" />
               <MyPlaylists path="/my-playlists" />
@@ -61,7 +60,8 @@ export class App extends Component {
 const mapStateToProps = state => {
   return {
     userData: state.user.userData,
-    accessToken: state.user.accessToken
+    accessToken: state.user.accessToken,
+    isLoading: state.root.isLoading
   };
 };
 // eslint-disable-next-line

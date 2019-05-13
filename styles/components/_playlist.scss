@@ -1,0 +1,14 @@
+.playlist {
+}
+
+.playlist__header {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+
+.playlist__image {
+  padding-top: 30px;
+  justify-self: center;
+  max-width: 300px;
+}

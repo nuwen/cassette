@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.googleapis.com/css?family=Raleway|Fredoka+One");
 a > .button,
 button,
 .button {
@@ -46,12 +46,14 @@ body,
   font-family: "Raleway", sans-serif;
   background: white;
   color: #3b4252;
-  height: 100%; }
+  height: 100%;
+  position: relative; }
 
 .container {
   display: grid;
   height: 100%;
   grid-template-rows: auto 1fr auto;
+  position: relative;
   grid-template-areas: "navigation" "app" "controls"; }
 
 ul,
@@ -60,7 +62,10 @@ ol {
   padding: 0; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: #434c5e; }
+  a:visited {
+    color: #434c5e; }
 
 .controls {
   display: grid;
@@ -71,14 +76,22 @@ a {
 .navigation {
   display: grid;
   grid-area: navigation;
-  grid-template-columns: 1fr 2fr 1fr;
-  justify-items: stretch; }
+  grid-template-columns: 1fr max-content 1fr;
+  padding-top: 5px;
+  align-items: center;
+  font-family: "Fredoka One";
+  min-height: 37px; }
+
+.navigation__item {
+  padding-left: 10px;
+  font-size: 18px;
+  justify-self: stretch; }
 
 .navigation__logo {
+  justify-self: stretch;
+  font-family: "Fredoka One";
+  font-size: 24px;
   justify-self: center; }
-
-.navigation > * {
-  border: 1px solid red; }
 
 .song {
   padding: 5px 0px;
@@ -104,14 +117,15 @@ a {
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
-  width: 36px;
-  height: 30px;
-  right: 20px;
-  top: 20px; }
+  width: 30px;
+  height: 25px;
+  right: 10px;
+  top: 10px; }
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #2e3440; }
+  background: #2e3440;
+  border-radius: 5px; }
 
 /* Color/shape of burger icon bars on hover*/
 .bm-burger-bars-hover {
@@ -168,10 +182,63 @@ Note: Beware of modifying this element as it can break the animations - you shou
   height: 100%;
   grid-area: app;
   padding: 0 10px;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  grid-area: app; }
+
+.loading {
+  display: grid;
+  height: 100%;
+  width: 100%;
+  grid-area: app;
+  background: rgba(216, 222, 233, 0.8);
+  z-index: 100;
+  color: rgba(255, 255, 255, 0); }
+
+.loading__image {
+  align-self: center;
+  justify-self: center;
+  max-width: 50%;
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 1.5s;
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite; }
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg); }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg); }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg); }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg); }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg); }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg); }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg); }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg); }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg); }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg); }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg); } }
 
 .myPlaylists {
   height: 100%; }
+
+.playlist__header {
+  display: grid;
+  justify-content: center;
+  text-align: center; }
+
+.playlist__image {
+  padding-top: 30px;
+  justify-self: center;
+  max-width: 300px; }
 
 .playlistTable {
   display: grid;
@@ -183,8 +250,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .userIndex {
   display: grid;
   grid-auto-flow: rows;
-  justify-items: center;
-  height: 100%; }
+  height: 100%;
+  justify-content: center; }
 
 .userIndex__buttons {
   display: grid;

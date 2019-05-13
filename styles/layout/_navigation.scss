@@ -1,13 +1,24 @@
 .navigation {
   display: grid;
   grid-area: navigation;
-  grid-template-columns: 1fr 2fr 1fr;
-  justify-items: stretch;
+  grid-template-columns: 1fr max-content 1fr;
+  // justify-items: stretch;
+  padding-top: 5px;
+  align-items: center;
+  font-family: "Fredoka One";
+  min-height: 37px;
+}
+
+.navigation__item {
+  padding-left: 10px;
+  font-size: 18px;
+  justify-self: stretch;
 }
 
 .navigation__logo {
+  justify-self: stretch;
+  font-family: "Fredoka One";
+  font-size: 24px;
   justify-self: center;
-}
-.navigation > * {
-  border: 1px solid red;
+  // padding: 0 20px;
 }

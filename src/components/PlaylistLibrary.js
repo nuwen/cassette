@@ -1,15 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
+import { updateLoadingState } from "../js/actions/index";
 
-const PlaylistLibrary = ({ userPlaylists, accessToken }) => {
+const PlaylistLibrary = ({
+  userPlaylists,
+  accessToken,
+  updateLoadingState
+}) => {
   if (!userPlaylists.items) {
-    return (
-      <div>
-        <h1>My Playlists</h1>
-        LOADING..
-      </div>
-    );
+    updateLoadingState(true);
+    return <div />;
   } else {
+    updateLoadingState(false);
+    let filteredList = userPlaylists.items.filter(list => list.collaborative);
+    console.log(filteredList);
     let playlists = userPlaylists.items.map(item => {
       if (item.name === " " || "") {
         return (
@@ -42,4 +46,7 @@ const mapStateToProps = state => ({
   userPlaylists: state.playlists.userPlaylists,
   accessToken: state.user.accessToken
 });
-export default connect(mapStateToProps)(PlaylistLibrary);
+export default connect(
+  mapStateToProps,
+  { updateLoadingState }
+)(PlaylistLibrary);
