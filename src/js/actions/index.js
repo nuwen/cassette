@@ -9,12 +9,13 @@ export function fetchUserData(accessToken) {
         return response.json();
       })
       .then(function(myJson) {
-        dispatch({ type: "FETCH_USER_DATA", payload: myJson });
+        dispatch({ type: "FETCH_USER_DATA", payload: { ...myJson } });
       });
   };
 }
 
 export function saveAccessToken(accessToken) {
+  // console.log("actions: " + accessToken);
   return function(dispatch) {
     return dispatch({
       type: "SAVE_ACCESS_TOKEN",

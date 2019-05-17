@@ -4,11 +4,12 @@ import { SAVE_ACCESS_TOKEN } from "../constants/action-types";
 const initialState = {
   userData: {},
   serverData: {},
-  accessToken: false
+  accessToken: {}
 };
 
 function userReducer(state = initialState, action) {
   if (action.type === SAVE_ACCESS_TOKEN) {
+    // console.log("reducer: " + action.payload);
     return Object.assign({}, state, {
       accessToken: action.payload
     });
@@ -16,9 +17,10 @@ function userReducer(state = initialState, action) {
 
   if (action.type === FETCH_USER_DATA) {
     return Object.assign({}, state, {
-      userData: Object.assign({}, state.userData, action.payload)
+      userData: { ...action.payload }
     });
   }
+
   return state;
 }
 

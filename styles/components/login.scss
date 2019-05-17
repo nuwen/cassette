@@ -1,0 +1,14 @@
+.login {
+  display: grid;
+  text-align: center;
+  grid-auto-rows: min-content;
+  grid-gap: 20px;
+  align-content: center;
+}
+
+.login__cassette {
+  margin-top: -40px;
+  width: auto;
+  justify-self: center;
+  max-width: 50%;
+}

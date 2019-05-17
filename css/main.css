@@ -56,6 +56,12 @@ body,
   position: relative;
   grid-template-areas: "navigation" "app" "controls"; }
 
+.routeless {
+  height: 100%;
+  grid-area: app;
+  padding: 0 10px;
+  overflow-y: scroll; }
+
 ul,
 ol {
   list-style: none;
@@ -258,3 +264,16 @@ Note: Beware of modifying this element as it can break the animations - you shou
   justify-items: center;
   grid-gap: 10px;
   grid-template-rows: min-content min-content min-content; }
+
+.login {
+  display: grid;
+  text-align: center;
+  grid-auto-rows: min-content;
+  grid-gap: 20px;
+  align-content: center; }
+
+.login__cassette {
+  margin-top: -40px;
+  width: auto;
+  justify-self: center;
+  max-width: 50%; }

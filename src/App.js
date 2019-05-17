@@ -16,23 +16,39 @@ import Hamburger from "./components/Hamburger";
 import Loading from "./components/Loading";
 
 export class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoggedIn: false,
+      accessToken: ""
+    };
+  }
   componentDidMount() {
-    let accessToken = false;
     const parsed = queryString.parse(window.location.search);
-    accessToken = parsed.access_token;
-    // eslint-disable-next-line
+    let accessToken = parsed.access_token;
     let refreshToken = parsed.refresh_token;
-    this.props.saveAccessToken(accessToken);
-    this.props.fetchUserData(accessToken);
-    this.props.fetchPlaylistsData(accessToken);
+    this.setState({
+      accessToken
+    });
+
+    if (accessToken) {
+      console.log(this.state.accessToken);
+      this.props.fetchUserData(accessToken);
+      this.props.fetchPlaylistsData(accessToken);
+      this.props.saveAccessToken(this.state.accessToken);
+      this.setState({
+        isLoggedIn: true
+      });
+    }
   }
 
   render() {
-    if (!this.props.accessToken) {
+    if (!this.state.isLoggedIn) {
       return (
         <div className="App">
-          <div className="container">
-            <Hamburger />
+          <Hamburger />
+          <div className="container routeless">
+            <Navigation />
             <Login path="/" />
           </div>
         </div>
@@ -59,9 +75,9 @@ export class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    userData: state.user.userData,
-    accessToken: state.user.accessToken,
-    isLoading: state.root.isLoading
+    userData: state.userData,
+    accessToken: state.accessToken,
+    isLoading: state.isLoading
   };
 };
 // eslint-disable-next-line
