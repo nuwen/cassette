@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateLoadingState } from "../js/actions/index";
+import { updateLoadingState } from "../../js/actions/index";
 
 const PlaylistLibrary = ({
   userPlaylists,

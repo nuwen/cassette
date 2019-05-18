@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import PlaylistLibrary from "./PlaylistLibrary";
-
+import PlaylistLibrary from "../snippets/PlaylistLibrary";
 
 class MyPlaylists extends Component {
   render() {

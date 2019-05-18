@@ -56,11 +56,32 @@ export function fetchPlaylistData(accessToken, playlistID) {
         Authorization: "Bearer " + accessToken
       }
     })
-      .then(function(response) {
-        return response.json();
-      })
+      .then(response => response.json())
       .then(function(myJson) {
         dispatch({ type: "FETCH_PLAYLIST_SONGS", payload: myJson });
       });
+  };
+}
+
+export function createPlaylist(accessToken, userID, formData) {
+  console.log(formData);
+  return function(dispatch) {
+    console.log(JSON.stringify(formData));
+    return fetch("https://api.spotify.com/v1/users/" + userID + "/playlists", {
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        Authorization: "Bearer " + accessToken,
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => {
+        console.log(response);
+        return response.json();
+      })
+      .then(myJSON => {
+        dispatch({ type: "CREATE_PLAYLIST", payload: myJSON });
+      })
+      .catch(error => console.error(error));
   };
 }

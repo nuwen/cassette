@@ -24,8 +24,19 @@ class Hamburger extends React.Component {
         >
           Playlists
         </a>
-        <a id="contact" className="menu-item" href="/">
+        <a
+          id="contact"
+          className="menu-item"
+          href={"/?access_token=" + this.props.accessToken}
+        >
           Profile
+        </a>
+        <a
+          id="createPlaylist"
+          className="menu-item"
+          href={"/create-playlist?access_token=" + this.props.accessToken}
+        >
+          Create Playlist
         </a>
       </Menu>
     );

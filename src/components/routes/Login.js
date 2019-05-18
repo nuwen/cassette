@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import cassette from "../cassette_image.svg";
+import cassette from "../../cassette_image.svg";
 // import {connect} from 'react-redux';
 
 class Login extends Component {
