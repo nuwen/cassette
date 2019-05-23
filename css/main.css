@@ -191,6 +191,20 @@ Note: Beware of modifying this element as it can break the animations - you shou
   overflow-y: scroll;
   grid-area: app; }
 
+.form {
+  display: grid;
+  grid-template-rows: 1fr; }
+  .form input {
+    border-radius: 5px;
+    padding: 5px; }
+
+.form-group {
+  margin-bottom: 20px;
+  display: grid; }
+  .form-group label {
+    display: block;
+    padding-bottom: 10px; }
+
 .loading {
   display: grid;
   height: 100%;

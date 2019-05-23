@@ -12,8 +12,8 @@ const PlaylistLibrary = ({
     return <div />;
   } else {
     updateLoadingState(false);
+    // eslint-disable-next-line
     let filteredList = userPlaylists.items.filter(list => list.collaborative);
-    console.log(filteredList);
     let playlists = userPlaylists.items.map(item => {
       if (item.name === " " || "") {
         return (

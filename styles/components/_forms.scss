@@ -1,0 +1,17 @@
+.form {
+  display: grid;
+  grid-template-rows: 1fr;
+  input {
+    border-radius: 5px;
+    padding: 5px;
+  }
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: grid;
+  label {
+    display: block;
+    padding-bottom: 10px;
+  }
+}
