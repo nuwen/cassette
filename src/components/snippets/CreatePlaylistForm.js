@@ -25,21 +25,19 @@ class CreatePlaylistForm extends Component {
   handleSubmit(event) {
     event.preventDefault();
     const playlist = this.state;
-    // const id = uuidv1();
-    // (accessToken,userID, formData)
+
     this.props.createPlaylist(
-      "BQCJ04HDec0cQottRQrCzgRnDRW9uTrkB5z7DvwrONgjb2g8MNLBx_6J3km8-PSxJWS7JuSN98j3cDHHkGEE-EO2U84ZZNhJZNj92feqLlEXW9x2StepkSXooi53D-UUtXkIv58T6cccexYgxHAnRsbOFw4ZHCthkSeSd-DPRfzMVmWgxulnezSE5osm_iz42DwMqxsoRHjDrnc0lCc-AZyFvj_t",
-      "nuwenese",
+      this.props.accessToken,
+      this.props.userID,
       playlist
     );
-    console.log("what");
     this.setState({ name: "", description: "" });
   }
 
   render() {
     const { name, description } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className="form" onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
@@ -67,13 +65,11 @@ class CreatePlaylistForm extends Component {
     );
   }
 }
-
 const mapStateToProps = state => {
   return {
-    accessToken: state.accessToken
+    userID: state.user.userData.id
   };
 };
-
 export default connect(
   mapStateToProps,
   { createPlaylist }
