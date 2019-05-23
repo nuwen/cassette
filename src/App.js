@@ -34,7 +34,6 @@ export class App extends Component {
     });
 
     if (accessToken) {
-      console.log(this.state.accessToken);
       this.props.fetchUserData(accessToken);
       this.props.fetchPlaylistsData(accessToken);
       this.props.saveAccessToken(accessToken);
@@ -50,7 +49,7 @@ export class App extends Component {
         <div className="App">
           <Hamburger />
           <div className="container routeless">
-            <Navigation />
+            <Navigation accessToken={this.state.accessToken} />
             <Login path="/" />
           </div>
         </div>
@@ -60,13 +59,16 @@ export class App extends Component {
         <div className="App">
           <Hamburger accessToken={this.state.accessToken} />
           <div className="container">
-            <Navigation />
+            <Navigation accessToken={this.state.accessToken} />
             {this.props.isLoading ? <Loading /> : null}
             <Router id="appRouter">
               <UserIndex path="/" />
               <MyPlaylists path="/my-playlists" />
               <Playlist path="/playlist/:playlistId" />
-              <CreatePlaylist path="/create-playlist" />
+              <CreatePlaylist
+                path="/create-playlist"
+                accessToken={this.state.accessToken}
+              />
             </Router>
             <Controls />
           </div>

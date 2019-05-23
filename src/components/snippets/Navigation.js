@@ -5,7 +5,9 @@ class Navigation extends React.Component {
     return (
       <nav className="navigation">
         <a className="navigation__item navigation__item-left" href="/#">
-          <div className="navigation__content">Login</div>
+          <div className="navigation__content">
+            {!this.props.accessToken ? "Login" : ""}
+          </div>
         </a>
         <a className="navigation__logo" href="/">
           Cassette

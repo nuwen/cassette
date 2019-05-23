@@ -1,6 +1,7 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import { decorator as reduxBurgerMenu } from "redux-burger-menu";
+import uuidv1 from "uuid";
 
 class Hamburger extends React.Component {
   showSettings(event) {
@@ -8,38 +9,75 @@ class Hamburger extends React.Component {
   }
 
   render() {
-    return (
-      <Menu right>
+    let menuItems = [
+      {
+        id: "home",
+        text: "Home",
+        className: "",
+        url: "/"
+      },
+      {
+        id: "about",
+        text: "About",
+        className: "",
+        url: "/about"
+      }
+    ];
+
+    let loggedInMenu = [
+      {
+        id: "profile",
+        className: "",
+        text: "Profile",
+        url: "/"
+      },
+      {
+        id: "playlists",
+        className: "",
+        text: "My Playlists",
+        url: "/my-playlists"
+      },
+      {
+        id: "createPlaylist",
+        className: "",
+        text: "Create New Playlist",
+        url: "/create-playlist"
+      },
+      {
+        id: "about",
+        className: "",
+        text: "About",
+        url: "/about"
+      }
+    ];
+
+    let renderedMenu;
+
+    if (!this.props.accessToken) {
+      renderedMenu = menuItems.map(({ id, className, url, text }) => (
         <a
-          id="home"
-          className="menu-item"
-          href={"/?access_token=" + this.props.accessToken}
+          id={id}
+          key={uuidv1()}
+          className={"menu-item " + className}
+          href={url}
         >
-          Home
+          {text}
         </a>
+      ));
+    } else {
+      renderedMenu = loggedInMenu.map(({ id, className, url, text }) => (
         <a
-          id="about"
-          className="menu-item"
-          href={"/my-playlists?access_token=" + this.props.accessToken}
+          id={id}
+          key={uuidv1()}
+          className={"menu-item " + className}
+          href={url + "?access_token=" + this.props.accessToken}
         >
-          Playlists
+          {text}
         </a>
-        <a
-          id="contact"
-          className="menu-item"
-          href={"/?access_token=" + this.props.accessToken}
-        >
-          Profile
-        </a>
-        <a
-          id="createPlaylist"
-          className="menu-item"
-          href={"/create-playlist?access_token=" + this.props.accessToken}
-        >
-          Create Playlist
-        </a>
-      </Menu>
-    );
+      ));
+    }
+
+    return <Menu right>{renderedMenu}</Menu>;
   }
 }
 export default reduxBurgerMenu(Hamburger);
