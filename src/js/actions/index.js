@@ -15,11 +15,19 @@ export function fetchUserData(accessToken) {
 }
 
 export function saveAccessToken(accessToken) {
-  // console.log("actions: " + accessToken);
   return function(dispatch) {
     return dispatch({
       type: "SAVE_ACCESS_TOKEN",
       payload: accessToken
+    });
+  };
+}
+
+export function saveRefreshToken(refreshToken) {
+  return function(dispatch) {
+    return dispatch({
+      type: "SAVE_REFRESH_TOKEN",
+      payload: refreshToken
     });
   };
 }
@@ -64,9 +72,7 @@ export function fetchPlaylistData(accessToken, playlistID) {
 }
 
 export function createPlaylist(accessToken, userID, formData) {
-  console.log(formData);
   return function(dispatch) {
-    console.log(JSON.stringify(formData));
     return fetch("https://api.spotify.com/v1/users/" + userID + "/playlists", {
       method: "POST",
       body: JSON.stringify(formData),
@@ -76,7 +82,6 @@ export function createPlaylist(accessToken, userID, formData) {
       }
     })
       .then(response => {
-        console.log(response);
         return response.json();
       })
       .then(myJSON => {
