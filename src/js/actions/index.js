@@ -1,3 +1,5 @@
+import queryString from "query-string";
+
 export function fetchUserData(accessToken) {
   return function(dispatch) {
     return fetch("https://api.spotify.com/v1/me", {
@@ -88,5 +90,17 @@ export function createPlaylist(accessToken, userID, formData) {
         dispatch({ type: "CREATE_PLAYLIST", payload: myJSON });
       })
       .catch(error => console.error(error));
+  };
+}
+
+export function addSong(accessToken, searchObject) {
+  return function(dispatch) {
+    let query = "q=name:";
+
+    return fetch("https://api.spotify.com/v1/search", {
+      headers: {
+        Authorization: "Bearer " + accessToken
+      }
+    });
   };
 }

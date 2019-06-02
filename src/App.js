@@ -49,7 +49,7 @@ export class App extends Component {
         <div className="App">
           <Hamburger />
           <div className="container routeless">
-            <Navigation accessToken={this.state.accessToken} />
+            <Navigation isLoggedIn={false} />
             <Login path="/" />
           </div>
         </div>
@@ -59,7 +59,10 @@ export class App extends Component {
         <div className="App">
           <Hamburger accessToken={this.state.accessToken} />
           <div className="container">
-            <Navigation accessToken={this.state.accessToken} />
+            <Navigation
+              isLoggedIn={true}
+              accessToken={this.state.accessToken}
+            />
             {this.props.isLoading ? <Loading /> : null}
             <Router id="appRouter">
               <UserIndex path="/" />

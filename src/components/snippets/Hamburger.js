@@ -2,6 +2,7 @@ import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import { decorator as reduxBurgerMenu } from "redux-burger-menu";
 import uuidv1 from "uuid";
+import { applyAccessTokenURL } from "../../js/utils/index";
 
 class Hamburger extends React.Component {
   showSettings(event) {
@@ -70,7 +71,7 @@ class Hamburger extends React.Component {
           id={id}
           key={uuidv1()}
           className={"menu-item " + className}
-          href={url + "?access_token=" + this.props.accessToken}
+          href={applyAccessTokenURL(url, this.props.accessToken)}
         >
           {text}
         </a>

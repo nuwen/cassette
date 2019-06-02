@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchPlaylistData, updateLoadingState } from "../../js/actions/index";
 import Song from "./Song";
+import queryString from "query-string";
 
 const Playlist = ({
   fetchPlaylistData,
@@ -24,19 +25,30 @@ const Playlist = ({
       images,
       tracks
     } = currentPlaylist;
+
     return (
       <div className="playlist">
         <header className="playlist__header">
-          <img className="playlist__image" src={images[0].url} alt="Playlist" />
+          <img
+            className="playlist__image"
+            src={
+              images.length
+                ? images[0].url
+                : "https://www.fillmurray.com/640/640"
+            }
+            alt="Playlist"
+          />
           <div className="playlist__details">
             <div>{name}</div>
             <div>by {display_name}</div>
           </div>
         </header>
         <ul>
-          {tracks.items.map(({ track }) => (
-            <Song key={track.id} {...track} />
-          ))}
+          {!tracks.items.length
+            ? "no songs found"
+            : tracks.items.map(({ track }) => (
+                <Song key={track.id} {...track} />
+              ))}
         </ul>
       </div>
     );
