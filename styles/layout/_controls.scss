@@ -1,6 +1,12 @@
 .controls {
+  min-height: 36px;
+  transition: all 400ms ease-in-out;
+}
+
+.controls__buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-auto-flow: column;
   grid-area: controls;
+  grid-gap: 1px;
 }

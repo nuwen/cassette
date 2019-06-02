@@ -1,0 +1,19 @@
+.searchForm-enter {
+  height: 0px;
+}
+.searchForm-enter-active {
+  height: 200px;
+  transition: height 200ms;
+}
+.searchForm-exit {
+  height: 200px;
+}
+
+.searchForm-exit-active {
+  height: 0px;
+  transition: height 200ms;
+}
+
+.searchForm-enter-done {
+  height: 200px;
+}

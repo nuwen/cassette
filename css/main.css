@@ -74,10 +74,15 @@ a {
     color: #434c5e; }
 
 .controls {
+  min-height: 36px;
+  transition: all 400ms ease-in-out; }
+
+.controls__buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-auto-flow: column;
-  grid-area: controls; }
+  grid-area: controls;
+  grid-gap: 1px; }
 
 .navigation {
   display: grid;
@@ -266,6 +271,23 @@ Note: Beware of modifying this element as it can break the animations - you shou
   padding: 10px;
   border-radius: 5px;
   grid-gap: 10px; }
+
+.searchForm-enter {
+  height: 0px; }
+
+.searchForm-enter-active {
+  height: 200px;
+  transition: height 200ms; }
+
+.searchForm-exit {
+  height: 200px; }
+
+.searchForm-exit-active {
+  height: 0px;
+  transition: height 200ms; }
+
+.searchForm-enter-done {
+  height: 200px; }
 
 .userIndex {
   display: grid;

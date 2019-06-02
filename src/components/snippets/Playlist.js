@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchPlaylistData, updateLoadingState } from "../../js/actions/index";
 import Song from "./Song";
-import queryString from "query-string";
 
 const Playlist = ({
   fetchPlaylistData,
