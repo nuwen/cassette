@@ -13,21 +13,15 @@ const PlaylistLibrary = ({
   } else {
     updateLoadingState(false);
     // eslint-disable-next-line
-    let filteredList = userPlaylists.items.filter(list => list.collaborative);
     let playlists = userPlaylists.items.map(item => {
-      if (item.name === " " || "") {
+      if (item.collaborative) {
         return (
           <li key={item.id}>
-            <a href={"/playlist/" + item.id + "?access_token=" + accessToken}>
-              No name found.
-            </a>
-          </li>
-        );
-      } else {
-        return (
-          <li key={item.id}>
-            <a href={"/playlist/" + item.id + "?access_token=" + accessToken}>
-              {item.name}
+            <a
+              className="playlistTable__item"
+              href={"/playlist/" + item.id + "?access_token=" + accessToken}
+            >
+              {item.name === " " || "" ? "No name found" : item.name}
             </a>
           </li>
         );

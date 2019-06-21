@@ -1,19 +1,88 @@
+// React Transitions
+
 .searchForm-enter {
-  height: 0px;
+  height: auto;
+  max-height: 0px;
 }
 .searchForm-enter-active {
-  height: 200px;
-  transition: height 200ms;
+  max-height: 400px;
+  transition: max-height 300ms;
 }
 .searchForm-exit {
-  height: 200px;
+  max-height: 400px;
 }
 
 .searchForm-exit-active {
-  height: 0px;
-  transition: height 200ms;
+  height: auto;
+  max-height: 0px;
+  transition: max-height 300ms;
 }
 
 .searchForm-enter-done {
-  height: 200px;
+  height: auto;
+  max-height: 400px;
+}
+
+.searchForm__options {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+}
+
+// Element Styles
+.searchForm {
+  padding: 20px;
+
+  > .form {
+    padding: 10px;
+  }
+  .form-group {
+    margin: 0;
+    display: block;
+  }
+}
+.searchForm__textbox {
+  display: grid;
+}
+.searchForm__checkboxes {
+  margin: 20px 0px 20px;
+}
+.searchForm__checkbox {
+  justify-self: center;
+  text-align: center;
+  width: 100%;
+  display: grid;
+  align-content: center;
+
+  label {
+    padding: 25px;
+    border-radius: 5px;
+    background-color: #eceff4;
+    transition: all 200ms ease-in-out;
+    &:hover {
+      background-color: #4c566a;
+      color: white;
+      cursor: pointer;
+    }
+  }
+  input[type="checkbox"] {
+    opacity: 0;
+    height: 1px;
+    width: 1px;
+    position: absolute;
+  }
+  input:checked ~ label {
+    color: white;
+    background-color: #4c566a;
+  }
+}
+
+.searchForm_submit {
+  border-radius: 5px;
+  border: 2px solid #4c566a;
+  &:focus,
+  &:hover,
+  &:active {
+    background: #eceff4;
+  }
 }

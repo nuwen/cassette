@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import user from "./userReducer";
 import playlists from "./playlistsReducer";
+import search from "./searchReducer";
 import { reducer as burgerMenu } from "redux-burger-menu";
 import { UPDATE_LOADING_STATE } from "../constants/action-types";
 // import songs from "./songsReducer";
@@ -22,6 +23,7 @@ function root(state = initialState, action) {
 export default combineReducers({
   root,
   user,
+  search,
   playlists,
   burgerMenu
 });

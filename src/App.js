@@ -15,6 +15,7 @@ import UserIndex from "./components/routes/UserIndex";
 import Hamburger from "./components/snippets/Hamburger";
 import Loading from "./components/snippets/Loading";
 import CreatePlaylist from "./components/routes/CreatePlaylist";
+import Search from "./components/routes/Search/Search";
 
 export class App extends Component {
   constructor(props) {
@@ -72,8 +73,9 @@ export class App extends Component {
                 path="/create-playlist"
                 accessToken={this.state.accessToken}
               />
+              <Search path="/search" />
             </Router>
-            <Controls />
+            <Controls accessToken={this.state.accessToken} />
           </div>
         </div>
       );

@@ -73,6 +73,7 @@ export function fetchPlaylistData(accessToken, playlistID) {
 
 export function createPlaylist(accessToken, userID, formData) {
   return function(dispatch) {
+    console.log(userID, formData);
     return fetch("https://api.spotify.com/v1/users/" + userID + "/playlists", {
       method: "POST",
       body: JSON.stringify(formData),
@@ -85,20 +86,12 @@ export function createPlaylist(accessToken, userID, formData) {
         return response.json();
       })
       .then(myJSON => {
+        console.log("anything");
         dispatch({ type: "CREATE_PLAYLIST", payload: myJSON });
       })
-      .catch(error => console.error(error));
-  };
-}
-
-export function addSong(accessToken, searchObject) {
-  return function(dispatch) {
-    // let query = "q=name:";
-
-    return fetch("https://api.spotify.com/v1/search", {
-      headers: {
-        Authorization: "Bearer " + accessToken
-      }
-    });
+      .catch(error =>
+        // eslint-disable-next-line
+        console.error(error)
+      );
   };
 }

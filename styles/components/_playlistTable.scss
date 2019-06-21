@@ -2,7 +2,18 @@
   display: grid;
 
   background-color: $snow-1;
-  padding: 10px;
   border-radius: 5px;
-  grid-gap: 10px;
+}
+
+.playlistTable__item {
+  display: block;
+  border-radius: 5px;
+  padding: 10px 10px;
+  transition: all 200ms ease-in-out;
+  &:hover,
+  &:focus,
+  &:active {
+    background: #4c566a;
+    color: white;
+  }
 }

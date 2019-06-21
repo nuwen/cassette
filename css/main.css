@@ -199,7 +199,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .form {
   display: grid;
   grid-template-rows: 1fr; }
-  .form input {
+  .form input[type="text"] {
     border-radius: 5px;
     padding: 5px; }
 
@@ -252,9 +252,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
   100% {
     transform: translate(1px, -2px) rotate(-1deg); } }
 
-.myPlaylists {
-  height: 100%; }
-
 .playlist__header {
   display: grid;
   justify-content: center;
@@ -268,26 +265,85 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .playlistTable {
   display: grid;
   background-color: #d8dee9;
-  padding: 10px;
+  border-radius: 5px; }
+
+.playlistTable__item {
+  display: block;
   border-radius: 5px;
-  grid-gap: 10px; }
+  padding: 10px 10px;
+  transition: all 200ms ease-in-out; }
+  .playlistTable__item:hover, .playlistTable__item:focus, .playlistTable__item:active {
+    background: #4c566a;
+    color: white; }
 
 .searchForm-enter {
-  height: 0px; }
+  height: auto;
+  max-height: 0px; }
 
 .searchForm-enter-active {
-  height: 200px;
-  transition: height 200ms; }
+  max-height: 400px;
+  transition: max-height 300ms; }
 
 .searchForm-exit {
-  height: 200px; }
+  max-height: 400px; }
 
 .searchForm-exit-active {
-  height: 0px;
-  transition: height 200ms; }
+  height: auto;
+  max-height: 0px;
+  transition: max-height 300ms; }
 
 .searchForm-enter-done {
-  height: 200px; }
+  height: auto;
+  max-height: 400px; }
+
+.searchForm__options {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(20px, 1fr)); }
+
+.searchForm {
+  padding: 20px; }
+  .searchForm > .form {
+    padding: 10px; }
+  .searchForm .form-group {
+    margin: 0;
+    display: block; }
+
+.searchForm__textbox {
+  display: grid; }
+
+.searchForm__checkboxes {
+  margin: 20px 0px 20px; }
+
+.searchForm__checkbox {
+  justify-self: center;
+  text-align: center;
+  width: 100%;
+  display: grid;
+  align-content: center; }
+  .searchForm__checkbox label {
+    padding: 25px;
+    border-radius: 5px;
+    background-color: #eceff4;
+    transition: all 200ms ease-in-out; }
+    .searchForm__checkbox label:hover {
+      background-color: #4c566a;
+      color: white;
+      cursor: pointer; }
+  .searchForm__checkbox input[type="checkbox"] {
+    opacity: 0;
+    height: 1px;
+    width: 1px;
+    position: absolute; }
+  .searchForm__checkbox input:checked ~ label {
+    color: white;
+    background-color: #4c566a; }
+
+.searchForm_submit {
+  border-radius: 5px;
+  border: 2px solid #4c566a; }
+  .searchForm_submit:focus, .searchForm_submit:hover, .searchForm_submit:active {
+    background: #eceff4; }
 
 .userIndex {
   display: grid;

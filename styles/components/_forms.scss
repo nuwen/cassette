@@ -1,7 +1,7 @@
 .form {
   display: grid;
   grid-template-rows: 1fr;
-  input {
+  input[type="text"] {
     border-radius: 5px;
     padding: 5px;
   }

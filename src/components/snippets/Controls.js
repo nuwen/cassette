@@ -14,14 +14,16 @@ class Controls extends React.Component {
 
   handleAddClick(event) {
     this.setState({
-      addClicked: true
+      addClicked: !this.state.addClicked
     });
   }
   render() {
     return (
       <div className="controls">
         <div className="controls__buttons">
-          <button onClick={this.handleAddClick}>Add Song</button>
+          <button onClick={this.handleAddClick}>
+            {!this.state.addClicked ? "Add Song" : "Close"}
+          </button>
           <button>Share</button>
         </div>
         <CSSTransition
@@ -32,7 +34,7 @@ class Controls extends React.Component {
           onEnter={() => this.setState({ formVisible: true })}
           onExit={() => this.setState({ formVisible: false })}
         >
-          <SearchFrom />
+          <SearchFrom accessToken={this.props.accessToken} />
         </CSSTransition>
       </div>
     );
