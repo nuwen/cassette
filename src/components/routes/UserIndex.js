@@ -18,9 +18,6 @@ const UserIndex = ({ userData, accessToken }) => {
     }
   ];
 
-  function sendQuery() {
-    console.log("clicked");
-  }
   return (
     <div className="userIndex">
       <span role="img" aria-label="User Profile Image" />
@@ -39,8 +36,6 @@ const UserIndex = ({ userData, accessToken }) => {
             <button>{button.text}</button>
           </a>
         ))}
-
-        <button onClick={sendQuery}>Test Button</button>
       </div>
     </div>
   );
