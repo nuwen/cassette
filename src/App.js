@@ -85,8 +85,8 @@ export class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    userData: state.userData,
-    accessToken: state.accessToken,
+    userData: state.user.userData,
+    accessToken: state.user.accessToken,
     isLoading: state.isLoading
   };
 };
