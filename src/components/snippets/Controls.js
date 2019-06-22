@@ -1,5 +1,5 @@
 import React from "react";
-import SearchFrom from "./SearchForm";
+import SearchForm from "../routes/Search/SearchForm";
 import { CSSTransition } from "react-transition-group";
 class Controls extends React.Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class Controls extends React.Component {
           onEnter={() => this.setState({ formVisible: true })}
           onExit={() => this.setState({ formVisible: false })}
         >
-          <SearchFrom accessToken={this.props.accessToken} />
+          <SearchForm accessToken={this.props.accessToken} />
         </CSSTransition>
       </div>
     );
