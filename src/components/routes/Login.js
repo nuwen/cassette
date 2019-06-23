@@ -12,7 +12,7 @@ class Login extends Component {
   loginButton() {
     window.location = window.location.href.includes("localhost")
       ? "http://localhost:8888/login"
-      : navigate("/login");
+      : navigate("https://cassette-backend-dn.herokuapp.com/login");
   }
 
   render() {
