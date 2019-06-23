@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import Song from "../../snippets/Song";
 
 const SearchResults = ({ results }) => {
-  console.log(results.tracks);
   if (results.tracks) {
     let items = results.tracks.items;
     return (
@@ -22,7 +21,12 @@ const SearchResults = ({ results }) => {
       </div>
     );
   } else {
-    return <div>No search found</div>;
+    return (
+      <div>
+        <h1>Search Results</h1>
+        No search found
+      </div>
+    );
   }
 };
 
