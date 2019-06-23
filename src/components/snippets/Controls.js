@@ -13,6 +13,7 @@ class Controls extends React.Component {
   }
 
   handleAddClick(event) {
+    event.preventDefault();
     this.setState({
       addClicked: !this.state.addClicked
     });

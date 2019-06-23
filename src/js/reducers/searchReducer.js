@@ -6,7 +6,9 @@ const initialState = {
 
 function searchReducer(state = initialState, action) {
   if (action.type === SAVE_RESULTS) {
-    console.log(action.payload);
+    return Object.assign({}, state, {
+      results: action.payload
+    });
   }
 
   return state;
