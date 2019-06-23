@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-
+import { navigate } from "@reach/router";
 import cassette from "../../cassette_image.svg";
+import { navigate } from "@reach/router/lib/history";
 // import {connect} from 'react-redux';
 
 class Login extends Component {
@@ -12,7 +13,7 @@ class Login extends Component {
   loginButton() {
     window.location = window.location.href.includes("localhost")
       ? "http://localhost:8888/login"
-      : null;
+      : navigate("/login");
   }
 
   render() {
